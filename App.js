@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Welcome to Biotion!</Text>
+      <Text style={{color: "Blue", fontSize:18 }}>Welcome to Biotion!</Text>
       <StatusBar style="auto" />
     </View>
   );
