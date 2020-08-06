@@ -1,10 +1,10 @@
 import React from 'react';
-import {StyleSheet, Text, View, Button} from 'react-native';
+import {ImageBackground, StyleSheet, Text, View, Button} from 'react-native';
 import firebase from 'firebase';
 import * as Google from "expo-google-app-auth";
 
-class LoginScreen extends React.Component {
 
+class LoginScreen extends React.Component {
   isUserEqual = (googleUser, firebaseUser) => {
     if (firebaseUser) {
       var providerData = firebaseUser.providerData;
@@ -86,10 +86,14 @@ class LoginScreen extends React.Component {
   render() {
         return (
             <View style={styles.container}>
-                <Button 
-                  title="Sign In With Google"
-                  onPress={() => this.signInWithGoogleAsync()}
-                />
+              <ImageBackground source={require('../forest.jpg')} style={styles.image}>
+                <View>
+                  <Text style={styles.text}>Biotion</Text>
+                </View>
+                  <View style={styles.button}>
+                    <Button title='Sign In With Google' onPress={() => this.signInWithGoogleAsync()}/>
+                  </View>
+              </ImageBackground>
             </View>
         );
     }
@@ -100,8 +104,29 @@ export default LoginScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#fff',
+    width: '100%',
+    height: '100%'
   },
+  image: {
+    width: '100%', 
+    height: '100%'
+  },
+  text: {
+    color: '#E6E6FA', 
+    fontSize: 40, 
+    textAlignVertical: 'center',
+    textAlign: 'center',
+    marginTop: '45%'
+  },
+  button: {
+    display: 'flex', 
+    justifyContent: 'center',
+    marginLeft: '25%',
+    marginTop: '50%',
+    width: 192, 
+    height: 48
+  }
 });

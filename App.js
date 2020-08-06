@@ -1,18 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import {createAppContainer, createSwitchNavigator} from 'react-navigation'
+import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 
-import LoginScreen from './screens/LoginScreen'
-import LoadingScreen from './screens/LoadingScreen'
-import DashboardScreen from './screens/DashboardScreen'
+import LoginScreen from './screens/LoginScreen';
+import LoadingScreen from './screens/LoadingScreen';
+import DashboardScreen from './screens/DashboardScreen';
 
-import firebase from 'firebase'
+import firebase from 'firebase';
 import { firebaseConfig } from './config';
-firebase.initializeApp(firebaseConfig)
+firebase.initializeApp(firebaseConfig);
+
 
 export default function App() {
-  return <AppNavigator/>
+  return (
+    <AppNavigator/>
+  );
+
 }
 
 const AppSwitchNavigator = createSwitchNavigator({
@@ -28,6 +32,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
 });
