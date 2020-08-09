@@ -1,7 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Text, View, StyleSheet, Linking } from 'react-native';
+import * as Location from 'expo-location';
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
+
 
 import LoginScreen from './screens/LoginScreen';
 import LoadingScreen from './screens/LoadingScreen';
@@ -13,8 +15,26 @@ firebase.initializeApp(firebaseConfig);
 
 
 export default function App() {
+
+  const [location, setLocation] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestPermissionsAsync();
+      if (status !== 'granted') {
+        Linking.openURL('app-settings:');
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+    })();
+
+  });
+
   return (
     <AppNavigator/>
+    
   );
 
 }
