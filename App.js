@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Text, View, StyleSheet, Linking } from 'react-native';
-import * as Location from 'expo-location';
+import {Permissions, Location} from 'expo';
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 
 
@@ -16,27 +16,26 @@ firebase.initializeApp(firebaseConfig);
 
 export default function App() {
 
-  const [location, setLocation] = useState(null);
+  state = {
+    status: null
+  };
 
-  useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestPermissionsAsync();
-      if (status !== 'granted') {
-        Linking.openURL('app-settings:');
-        return;
-      }
+  permissionsFlow = async () => {
+    const {status} = await Permissions.askAsync(Permissions.LOCATION);
+    this.setState({status});
 
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-    })();
+    if (status !== 'granted') {
+      Linking.openURL('app-settings:');
+      return;
+    }
 
-  });
+    const {data} = await Location.getCurrentPositionAsync(options);
+    console.log(data);
+  };
 
   return (
     <AppNavigator/>
-    
   );
-
 }
 
 const AppSwitchNavigator = createSwitchNavigator({
