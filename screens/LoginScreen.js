@@ -4,7 +4,7 @@ import firebase from 'firebase';
 import * as Google from "expo-google-app-auth";
 
 
-class LoginScreen extends React.Component {
+export default class LoginScreen extends React.Component {
   isUserEqual = (googleUser, firebaseUser) => {
     if (firebaseUser) {
       var providerData = firebaseUser.providerData;
@@ -99,7 +99,6 @@ class LoginScreen extends React.Component {
     }
 }
 
-export default LoginScreen;
 
 const styles = StyleSheet.create({
   container: {

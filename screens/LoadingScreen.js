@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 import firebase from 'firebase';
 
-class LoadingScreen extends React.Component {
+export default class LoadingScreen extends React.Component {
 
   componentDidMount() {
     this.checkedIfLoggedIn();
@@ -30,7 +30,6 @@ class LoadingScreen extends React.Component {
     }
 }
 
-export default LoadingScreen;
 
 const styles = StyleSheet.create({
   container: {
