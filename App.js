@@ -30,7 +30,7 @@ export default function App() {
     }
 
     const {data} = await Location.getCurrentPositionAsync(options);
-    console.log(data);
+
   };
 
   return (
@@ -45,6 +45,7 @@ const AppSwitchNavigator = createSwitchNavigator({
 })
 
 const AppNavigator = createAppContainer(AppSwitchNavigator);
+
 
 const styles = StyleSheet.create({
   container: {

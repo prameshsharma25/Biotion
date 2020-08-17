@@ -17,7 +17,18 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.Biotion.Biotion",
+      "buildNumber": "1.0.0",
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.Biotion.Biotion",
+      "versionCode": 1,
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyCHtl3P7uSGCxPyp82GBUsA1TaLEGVQGBQ"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"

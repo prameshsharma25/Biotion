@@ -1,11 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
-
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import MapView from 'react-native-maps';
 
 export default class Map extends React.Component {
   render() {
       return (
-          <Text>I'm the Map.</Text>
+        <View style={styles.container}>
+          <MapView style={styles.mapStyle}/>
+        </View>
+
+ 
       )
   }
 }
@@ -13,8 +17,12 @@ export default class Map extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000',
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  mapStyle: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+  }
 });

@@ -32,12 +32,6 @@ export default class Picture extends React.Component {
     }
   }
 
-  pickImage = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-    });
-  }
-
   render () {
     const { hasPermission } = this.state
     if (hasPermission === null) {
@@ -48,11 +42,7 @@ export default class Picture extends React.Component {
         return (
           <View style={{ flex: 1 }}>
             <Camera style={{ flex: 1 }} type={this.state.cameraType} ref={ref => {this.camera = ref}}>
-              <View style={{flex:1, flexDirection:"row", justifyContent:"space-between", margin: 20}}>
-                <TouchableOpacity
-                  style={{alignSelf: 'flex-end', alignItems: 'center', backgroundColor: 'transparent', }} onPress={()=>this.pickImage()}>
-                  <Ionicons name="ios-photos" style={{ color: "#fff", fontSize: 40}}/>
-                </TouchableOpacity>
+              <View style={{flex:1, flexDirection:"row", justifyContent:"space-around", margin: 20}}>
                
                 <TouchableOpacity
                   style={{alignSelf: 'flex-end', alignItems: 'center', backgroundColor: 'transparent'}} onPress={() => this.snap()}>
