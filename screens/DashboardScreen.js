@@ -36,8 +36,8 @@ export default class DashboardScreen extends React.Component {
     return (
       <NavigationContainer>
         <Tabs.Navigator>
-          <Tabs.Screen name='Events' component={EventStackScreen} />
           <Tabs.Screen name='Camera' component={CameraStackScreen} />
+          <Tabs.Screen name='Events' component={EventStackScreen} />
           <Tabs.Screen name='Map' component={MapStackScreen}/>
         </Tabs.Navigator>
       </NavigationContainer>

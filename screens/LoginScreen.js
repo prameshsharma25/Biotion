@@ -86,7 +86,7 @@ export default class LoginScreen extends React.Component {
   render() {
         return (
             <View style={styles.container}>
-              <ImageBackground source={require('../forest.jpg')} style={styles.image}>
+              <ImageBackground source={require('../forest.jpg')} style={styles.image} blurRadius={0.3}>
                 <View>
                   <Text style={styles.text}>Biotion</Text>
                 </View>
@@ -118,7 +118,8 @@ const styles = StyleSheet.create({
     fontSize: 40, 
     textAlignVertical: 'center',
     textAlign: 'center',
-    marginTop: '45%'
+    marginTop: '55%',
+
   },
   button: {
     display: 'flex', 

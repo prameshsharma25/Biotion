@@ -1,15 +1,37 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Camera } from 'expo-camera';
+import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
+import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
-import { FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
-import * as ImagePicker from 'expo-image-picker';
-
 
 export default class Picture extends React.Component {
   state = {
     hasPermission: null,
     type: Camera.Constants.Type.back,
+    location: null,
+    geocode: null,
+    errorMessage: ""
+  }
+
+  getLocationAsync = async () => {
+    let { status } = await Permissions.askAsync(Permissions.LOCATION);
+    if (status !== 'granted') {
+      this.setState({
+        errorMessage: 'Permission to access location was denied',
+      });
+    }
+
+    let location = await Location.getCurrentPositionAsync({accuracy:Location.Accuracy.Highest});
+    const { latitude , longitude } = location.coords
+    this.getGeocodeAsync({latitude, longitude})
+    this.setState({ location: {latitude, longitude}});
+
+  };
+
+  getGeocodeAsync= async (location) => {
+    let geocode = await Location.reverseGeocodeAsync(location)
+    this.setState({ geocode})
   }
 
   async componentDidMount() {
